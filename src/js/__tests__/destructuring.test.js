@@ -35,6 +35,7 @@ test('test base functionality', () => {
       id: 9,
       name: 'Нокаутирующий удар',
       icon: 'http://...',
+      description: 'Описание недоступно',
     },
   ];
   expect(getAbilities(character)).toEqual(expectedArray);

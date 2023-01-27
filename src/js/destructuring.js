@@ -10,8 +10,7 @@ function getAbilities(character) {
       id, name: specialName, icon, description,
     });
   });
-
-  return specials;
+  return abilities;
 }
 
 export default getAbilities;
