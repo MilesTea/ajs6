@@ -15,21 +15,6 @@ test('test base functionality', () => {
   expect(orderedArray).toEqual(expectedArray);
 });
 
-test.each([
-  [['name', 'level'], false],
-  [['age', 'gear'], true],
-])('test on order verify ', (order, error) => {
-  const testObject = {
-    name: 'мечник', health: 10, level: 2, attack: 80, defence: 40,
-  };
-  function testFunction() { orderByProps(testObject, order); }
-  if (error) {
-    expect(testFunction).toThrow(Error);
-  } else {
-    expect(testFunction).not.toThrow(Error);
-  }
-});
-
 test('test sorting', () => {
   const testObject = {
     name: 'мечник', health: 10, level: 2, attack: 80, defence: 40,

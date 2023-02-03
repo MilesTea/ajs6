@@ -1,26 +1,28 @@
 function orderByProps(object, order) {
-  const orderedArray = [];
-  order.forEach((element) => {
-    if (Object.prototype.hasOwnProperty.call(object, element)) {
-      orderedArray.push({ key: element, value: object[element] });
+  const keys = Object.keys(object);
+  const unsortedKeys = [];
+  const unorderedKeys = [];
+
+  keys.forEach((key) => {
+    if (order.includes(key)) {
+      unorderedKeys.push(key);
     } else {
-      throw new Error();
+      unsortedKeys.push(key);
     }
   });
+  const orderedArray = order.filter((element) => unorderedKeys.includes(element));
+  unsortedKeys.sort();
 
-  const sortedArray = [];
-  for (const element in object) {
-    if (!order.includes(element)) {
-      sortedArray.push({ key: element, value: object[element] });
-    }
-  }
-
-  sortedArray.sort((a, b) => {
-    if (a.key > b.key) {
-      return 1;
-    } return -1;
+  const finalKeys = orderedArray.concat(unsortedKeys);
+  const finalArray = [];
+  finalKeys.forEach((key) => {
+    const tempObj = {};
+    tempObj.key = key;
+    tempObj.value = object[key];
+    finalArray.push(tempObj);
   });
-  return orderedArray.concat(sortedArray);
+
+  return finalArray;
 }
 
 export default orderByProps;
